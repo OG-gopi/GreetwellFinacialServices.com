@@ -46,7 +46,7 @@ import AgentSignupPage from '@/pages/AgentSignupPage'
 import NotificationSimulator from '@/components/NotificationSimulator'
 
 export default function App() {
-  const { initialize } = useAuthStore()
+  const { initialize, role } = useAuthStore()
 
   useEffect(() => {
     initialize()
@@ -55,7 +55,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Toaster position="top-right" theme="light" />
-      <NotificationSimulator />
+      {role === 'superadmin' && <NotificationSimulator />}
       
       <Routes>
         <Route path="/" element={<HomePage />} />
