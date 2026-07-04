@@ -263,14 +263,14 @@ export default function HomePage() {
               className="flex-1 max-w-2xl"
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-[1.15] mb-6 font-serif uppercase">
-                GIVING BACK <br />
+                GREETWELL FINANCIAL SERVICES <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-800">
-                  TO SOCIETY
+                  LOANS, INSURANCE & INVESTMENTS
                 </span>
               </h1>
               
               <p className="text-slate-600 text-lg mb-8 leading-relaxed max-w-xl">
-                At <strong className="text-[#081f45]">Greetwell Financial Services</strong>, we believe in growing together. <strong className="text-[#081f45] font-bold">A portion of our earnings is dedicated to supporting those in need.</strong> We care for society by contributing to <strong className="text-green-600 font-semibold">food donation</strong> and empowering lives for a better tomorrow.
+                As your trusted financial consultant in <strong>Chanda Nagar, Hyderabad</strong>, we provide comprehensive financial services. We also believe in growing together—<strong className="text-[#081f45] font-bold">a portion of our earnings is dedicated to supporting those in need</strong> through <strong className="text-green-600 font-semibold">food donation</strong> and community support.
               </p>
 
               <a href="#about" className="bg-gradient-to-r from-[#003153] to-[#0A4D80] text-white px-8 py-3.5 rounded-full font-semibold text-sm shadow-lg shadow-blue-900/20 hover:shadow-xl hover:shadow-blue-900/30 hover:-translate-y-0.5 transition-all inline-flex items-center gap-2 group">
@@ -362,7 +362,7 @@ export default function HomePage() {
             <div className="flex-1">
               <div className="space-y-4 text-slate-600 leading-relaxed mb-8">
                 <p>
-                  At <strong className="text-[#081f45]">Greetwell Financial Services</strong>, our mission is to help individuals and businesses achieve their financial goals through trusted and customer-focused solutions. We provide a wide range of services including Loans, Insurance, and Investment Solutions designed to support every stage of life and business growth.
+                  At <strong className="text-[#081f45]">Greetwell Financial Services</strong> in Hyderabad, our mission is to help individuals and businesses achieve their financial goals through trusted and customer-focused solutions. We provide a wide range of services including Loans, Insurance, and Investment Solutions designed to support every stage of life and business growth.
                 </p>
                 <p>
                   Beyond financial services, we believe in <strong>Giving Back to Society</strong>. Through our food donation initiatives and community support activities, we strive to make a meaningful impact and spread care to those in need.
@@ -448,7 +448,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 font-serif mb-3">Loans</h3>
                 <p className="text-slate-500 text-sm leading-relaxed mb-6">
-                  Get fast, transparent, and hassle-free loans custom-tailored for your personal or business milestones.
+                  Get fast, transparent, and hassle-free custom-tailored loans in Chanda Nagar and across Hyderabad for your personal or business milestones.
                 </p>
               </div>
               <ul className="space-y-2 border-t pt-6 border-slate-50 mb-6">
@@ -473,7 +473,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 font-serif mb-3">Insurance</h3>
                 <p className="text-slate-500 text-sm leading-relaxed mb-6">
-                  Protect what matters most with GFS's wide-ranging and fully reliable health, life, and motor coverage plans.
+                  Protect what matters most with GFS's wide-ranging and fully reliable health, life, and motor coverage plans in Hyderabad.
                 </p>
               </div>
               <ul className="space-y-2 border-t pt-6 border-slate-50 mb-6">
