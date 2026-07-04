@@ -180,6 +180,9 @@ export default function App() {
         <Route path="/admin" element={<Navigate to="/loans/admin/dashboard" replace />} />
         <Route path="/customer/dashboard" element={<Navigate to="/loans/customer/dashboard" replace />} />
         <Route path="/processing/dashboard" element={<RouteGuard allowedRoles={['processing_team']}><ProcessingTeamDashboard /></RouteGuard>} />
+        <Route path="/dashboard" element={<Navigate to="/loans/customer/dashboard" replace />} />
+        <Route path="/applications" element={<Navigate to="/loans/customer/applications" replace />} />
+        <Route path="/profile" element={<Navigate to="/loans/customer/dashboard" replace />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
