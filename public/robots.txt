@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://greetwell-finacial-services-com.vercel.app/sitemap.xml

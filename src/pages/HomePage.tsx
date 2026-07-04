@@ -188,7 +188,6 @@ export default function HomePage() {
             })}
           </nav>
 
-          {/* Contact Info (Right) */}
           <div className="hidden md:flex items-center gap-3 relative z-20">
             <a href="tel:+919866382525" className="w-10 h-10 rounded-full bg-cyan-50 flex items-center justify-center text-cyan-600 hover:bg-cyan-100 transition-colors">
               <Phone className="w-4 h-4" />
@@ -199,12 +198,7 @@ export default function HomePage() {
               </a>
               <span className="text-[10px] text-slate-500 font-medium">Mon - Sat: 9:30 AM - 6:30 PM</span>
             </div>
-            <Link
-              to="/login"
-              className="ml-4 bg-sky-500 text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-md hover:bg-sky-600 hover:shadow-lg hover:-translate-y-0.5 transition-all"
-            >
-              Login
-            </Link>
+            {/* Login button temporarily hidden for public lead-gen mode */}
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -245,13 +239,7 @@ export default function HomePage() {
                   </a>
                 );
               })}
-              <Link
-                to="/login"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center inline-block bg-cyan-600 text-white px-6 py-3 rounded-full font-bold text-sm mt-4 shadow-md"
-              >
-                Login
-              </Link>
+              {/* Mobile Login button temporarily hidden */}
             </motion.div>
           )}
         </AnimatePresence>
@@ -467,12 +455,12 @@ export default function HomePage() {
                 <li className="flex items-center gap-2 text-sm text-slate-600"><CheckCircle2 className="w-4 h-4 text-cyan-600 shrink-0" /> Personal & Business Loans</li>
                 <li className="flex items-center gap-2 text-sm text-slate-600"><CheckCircle2 className="w-4 h-4 text-cyan-600 shrink-0" /> Home & Mortgage Loans</li>
               </ul>
-              <Link
-                to="/loans/login"
+              <a
+                href="#contact"
                 className="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-full font-bold text-sm shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
               >
                 Know More <ArrowRight className="w-4 h-4" />
-              </Link>
+              </a>
             </motion.div>
  
             <motion.div 
@@ -492,12 +480,12 @@ export default function HomePage() {
                 <li className="flex items-center gap-2 text-sm text-slate-600"><CheckCircle2 className="w-4 h-4 text-cyan-600 shrink-0" /> Health & Life Insurance</li>
                 <li className="flex items-center gap-2 text-sm text-slate-600"><CheckCircle2 className="w-4 h-4 text-cyan-600 shrink-0" /> Term & Motor Insurance</li>
               </ul>
-              <Link
-                to="/insurance/login"
+              <a
+                href="#contact"
                 className="w-full inline-flex items-center justify-center gap-2 bg-[#0B2144] hover:bg-slate-800 text-white px-6 py-3 rounded-full font-bold text-sm shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
               >
                 Know More <ArrowRight className="w-4 h-4" />
-              </Link>
+              </a>
             </motion.div>
  
             <motion.div 
@@ -521,12 +509,12 @@ export default function HomePage() {
                 <li className="flex items-center gap-2 text-sm text-slate-600"><CheckCircle2 className="w-4 h-4 text-cyan-600 shrink-0" /> Customized Financial Advice</li>
                 <li className="flex items-center gap-2 text-sm text-slate-600"><CheckCircle2 className="w-4 h-4 text-amber-500 shrink-0" /> CHITS – Group Savings Scheme</li>
               </ul>
-              <Link
-                to="/investment/login"
+              <a
+                href="#contact"
                 className="w-full inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-full font-bold text-sm shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
               >
                 Know More <ArrowRight className="w-4 h-4" />
-              </Link>
+              </a>
             </motion.div>
           </div>
         </div>
@@ -680,13 +668,13 @@ export default function HomePage() {
 
               {/* Dynamic Register Now main CTA */}
               <div className="mt-auto">
-                <Link
-                  to={`/signup/${selectedAgentType}`}
+                <a
+                  href="#contact"
                   className="w-full bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20ba5a] hover:to-[#0f7d70] text-white py-3.5 rounded-full font-extrabold text-sm shadow-lg shadow-green-500/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2"
                 >
                   <span>Register Now as {selectedAgentType === 'loan-agent' ? 'Loan Agent' : selectedAgentType === 'insurance-agent' ? 'Insurance Agent' : 'Investment Agent'}</span>
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </a>
               </div>
             </motion.div>
 
@@ -990,9 +978,9 @@ export default function HomePage() {
 
               <div className="flex flex-col gap-3">
                 <h4 className="text-[#D4AF37] text-[10px] font-bold uppercase tracking-widest mb-1">Solutions</h4>
-                <Link to="/login" className="text-xs hover:text-white transition-colors">Small Medium Business</Link>
-                <Link to="/login" className="text-xs hover:text-white transition-colors">Mid-Size Companies</Link>
-                <Link to="/login" className="text-xs hover:text-white transition-colors">Personal Finance</Link>
+                <a href="#contact" className="text-xs hover:text-white transition-colors">Small Medium Business</a>
+                <a href="#contact" className="text-xs hover:text-white transition-colors">Mid-Size Companies</a>
+                <a href="#contact" className="text-xs hover:text-white transition-colors">Personal Finance</a>
               </div>
               
             </div>
