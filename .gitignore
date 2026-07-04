@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Additional ignores
+.env
+*.zip
+node-portable
+build
