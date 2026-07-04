@@ -832,15 +832,15 @@ export default function HomePage() {
                         boxShadow: '0 12px 40px rgba(15, 23, 42, 0.04)'
                       }}
                     >
-                      {/* Balanced Landscape Aspect Container */}
-                      <div className="relative aspect-[4/3] w-full rounded-[1.5rem] overflow-hidden bg-slate-950 mb-5">
+                      {/* Balanced Aspect Container */}
+                      <div className="relative h-52 w-full rounded-[1.5rem] overflow-hidden bg-slate-50 mb-5 flex items-center justify-center border border-slate-100">
                         <img 
                           src={item.src} 
                           alt={item.title} 
-                          className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 animate-fade-in" 
+                          className="w-full h-full object-contain object-center transition-transform duration-700 ease-out group-hover:scale-105 animate-fade-in p-2" 
                         />
                         {/* Hover Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                       </div>
 
                       {/* Elegant Labels and Typography Section */}
