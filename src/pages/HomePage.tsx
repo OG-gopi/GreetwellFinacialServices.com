@@ -813,36 +813,36 @@ export default function HomePage() {
                       {/* Top Accent Gradient Border on Hover */}
                       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
 
-                      {/* Image Box Frame - Clean Padding & Fitted Image */}
-                      <div className="relative h-60 w-full overflow-hidden bg-slate-950 p-3 flex items-center justify-center">
-                        {/* Background subtle blur fill */}
+                      {/* Image Box Frame - Light Matching Soft Background (No Black Box) */}
+                      <div className="relative h-60 w-full overflow-hidden bg-slate-100/70 p-3 flex items-center justify-center border-b border-slate-100">
+                        {/* Soft color blur derived from the image */}
                         <div 
-                          className="absolute inset-0 bg-cover bg-center blur-md opacity-30 scale-110" 
+                          className="absolute inset-0 bg-cover bg-center blur-2xl opacity-25 scale-125" 
                           style={{ backgroundImage: `url(${item.src})` }}
                         />
-                        <div className="absolute inset-0 bg-slate-950/50" />
+                        <div className="absolute inset-0 bg-white/40" />
 
                         {/* Complete Fit Photo (100% visible, no crop) */}
                         <img 
                           src={item.src} 
                           alt={item.title} 
-                          className="relative z-10 max-w-full max-h-full object-contain rounded-xl shadow-md transition-transform duration-500 group-hover:scale-105" 
+                          className="relative z-10 max-w-full max-h-full object-contain rounded-xl shadow-md border border-slate-200/60 transition-transform duration-500 group-hover:scale-105" 
                         />
 
                         {/* Floating Category Badge over Image */}
-                        <div className={`absolute top-3 left-3 z-20 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider backdrop-blur-md shadow-lg border border-white/20 text-white ${
-                          item.category === 'Awards' ? 'bg-amber-500/90' :
-                          item.category === 'Events' ? 'bg-indigo-600/90' :
-                          item.category === 'Recognition' ? 'bg-cyan-600/90' :
-                          item.category === 'Team Meet' ? 'bg-emerald-600/90' :
-                          'bg-rose-600/90'
+                        <div className={`absolute top-3 left-3 z-20 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider backdrop-blur-md shadow-sm border border-white/50 ${
+                          item.category === 'Awards' ? 'bg-amber-100/90 text-amber-900 border-amber-200/80' :
+                          item.category === 'Events' ? 'bg-indigo-100/90 text-indigo-900 border-indigo-200/80' :
+                          item.category === 'Recognition' ? 'bg-cyan-100/90 text-cyan-900 border-cyan-200/80' :
+                          item.category === 'Team Meet' ? 'bg-emerald-100/90 text-emerald-900 border-emerald-200/80' :
+                          'bg-rose-100/90 text-rose-900 border-rose-200/80'
                         }`}>
                           {icons[item.category]}
                           <span>{item.category}</span>
                         </div>
 
                         {/* Floating Expand Icon Button */}
-                        <div className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-slate-950/60 backdrop-blur-md border border-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 hover:bg-cyan-500 hover:border-cyan-400 shadow-xl">
+                        <div className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-white/80 backdrop-blur-md border border-slate-200 text-slate-700 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 hover:bg-cyan-600 hover:text-white hover:border-cyan-600 shadow-md">
                           <Maximize2 className="w-3.5 h-3.5" />
                         </div>
                       </div>
@@ -880,41 +880,51 @@ export default function HomePage() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedImage(null)}
-              className="fixed inset-0 z-[100] bg-slate-950/95 backdrop-blur-xl flex flex-col items-center justify-center p-4 md:p-8"
+              className="fixed inset-0 z-[100] bg-slate-900/60 backdrop-blur-xl flex flex-col items-center justify-center p-4 md:p-8"
             >
+              {/* Close Button */}
               <button 
                 onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }}
-                className="absolute top-6 right-6 text-white/80 hover:text-white bg-white/10 hover:bg-cyan-500 p-3 rounded-full transition-all duration-300 shadow-2xl border border-white/20 z-20"
+                className="absolute top-6 right-6 text-slate-700 hover:text-slate-900 bg-white/90 hover:bg-white p-3 rounded-full transition-all duration-300 shadow-xl border border-slate-200 z-30"
               >
                 <X className="w-6 h-6" />
               </button>
               
               <motion.div 
-                initial={{ scale: 0.9, y: 20 }}
+                initial={{ scale: 0.92, y: 20 }}
                 animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0.9, y: 20 }}
+                exit={{ scale: 0.92, y: 20 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative max-w-5xl max-h-[90vh] w-full flex flex-col items-center justify-center rounded-3xl overflow-hidden bg-slate-900/90 border border-slate-700/80 shadow-2xl p-4 md:p-6"
+                className="relative max-w-5xl max-h-[90vh] w-full flex flex-col items-center justify-center rounded-3xl overflow-hidden bg-white shadow-2xl border border-slate-200/80 p-4 md:p-6"
               >
-                {/* Photo Display Frame with Clean Border & Top/Bottom Padding */}
-                <div className="w-full flex items-center justify-center p-2 md:p-4 rounded-2xl bg-slate-950/60 border border-white/10 overflow-hidden">
+                {/* Photo Display Frame - Matching Dynamic Ambient Background (No Black Box) */}
+                <div className="relative w-full flex items-center justify-center p-3 md:p-6 rounded-2xl bg-slate-50 border border-slate-200/60 overflow-hidden min-h-[50vh]">
+                  {/* Image Soft Color Fill */}
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center blur-3xl opacity-20 scale-125" 
+                    style={{ backgroundImage: `url(${selectedImage})` }}
+                  />
+                  <div className="absolute inset-0 bg-white/50" />
+
+                  {/* High Resolution Photo */}
                   <img 
                     src={selectedImage} 
                     alt="Enlarged achievement view" 
-                    className="max-w-full max-h-[65vh] object-contain rounded-xl shadow-2xl border border-white/10"
+                    className="relative z-10 max-w-full max-h-[65vh] object-contain rounded-xl shadow-xl border border-slate-200/80"
                   />
                 </div>
 
+                {/* Details Footer Below Photo */}
                 {(() => {
                   const item = GALLERY_ITEMS.find(i => i.src === selectedImage);
                   if (!item) return null;
                   return (
-                    <div className="w-full bg-slate-950/90 backdrop-blur-md p-4 text-center border-t border-slate-800 mt-4 rounded-2xl">
-                      <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 mb-2">
+                    <div className="w-full bg-white p-4 text-center border-t border-slate-100 mt-3 rounded-2xl">
+                      <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-cyan-50 text-cyan-700 border border-cyan-200/60 mb-2">
                         <span>{item.category}</span>
                       </div>
-                      <h4 className="text-white text-xl font-bold font-serif">{item.title}</h4>
-                      <p className="text-slate-400 text-xs mt-1 max-w-2xl mx-auto">{item.description}</p>
+                      <h4 className="text-slate-900 text-xl font-bold font-serif">{item.title}</h4>
+                      <p className="text-slate-600 text-xs mt-1 max-w-2xl mx-auto">{item.description}</p>
                     </div>
                   );
                 })()}
