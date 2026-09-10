@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   Phone, ChevronRight, CheckCircle2, Menu, X, ArrowRight, 
-  MapPin, Mail, Globe, Trophy, Calendar, Users, Award, Heart, Sparkles
+  MapPin, Mail, Globe, Trophy, Calendar, Users, Award, Heart, Sparkles, Maximize2
 } from 'lucide-react'
 
 const HERO_IMAGES = [
@@ -791,13 +791,6 @@ export default function HomePage() {
               {GALLERY_ITEMS
                 .filter(item => activeCategory === 'All' || item.category === activeCategory)
                 .map((item, idx) => {
-                  const catColors: Record<string, string> = {
-                    Awards: 'bg-amber-50 text-amber-700 border-amber-100/50',
-                    Events: 'bg-indigo-50 text-indigo-700 border-indigo-100/50',
-                    Recognition: 'bg-cyan-50 text-cyan-700 border-cyan-100/50',
-                    'Team Meet': 'bg-emerald-50 text-emerald-700 border-emerald-100/50',
-                    'CSR Activities': 'bg-rose-50 text-rose-700 border-rose-100/50'
-                  };
                   const icons: Record<string, React.ReactNode> = {
                     Awards: <Trophy className="w-3 h-3" />,
                     Events: <Calendar className="w-3 h-3" />,
@@ -815,43 +808,58 @@ export default function HomePage() {
                       key={item.src}
                       onClick={() => setSelectedImage(item.src)}
                       whileHover={{ y: -8 }}
-                      className="bg-white/80 backdrop-blur-md border border-slate-100 rounded-[2rem] p-4.5 shadow-xl hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-500 ease-out flex flex-col cursor-pointer group"
-                      style={{
-                        boxShadow: '0 12px 40px rgba(15, 23, 42, 0.04)'
-                      }}
+                      className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-lg hover:shadow-2xl hover:shadow-cyan-500/15 transition-all duration-500 flex flex-col cursor-pointer group relative"
                     >
-                      {/* Balanced Aspect Container */}
-                      <div className="relative h-52 w-full rounded-[1.5rem] overflow-hidden bg-slate-50 mb-5 flex items-center justify-center border border-slate-100">
+                      {/* Top Accent Gradient Border on Hover */}
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
+
+                      {/* Full-Bleed Cover Image Frame */}
+                      <div className="relative h-60 w-full overflow-hidden bg-slate-900">
                         <img 
                           src={item.src} 
                           alt={item.title} 
-                          className="w-full h-full object-contain object-center transition-transform duration-700 ease-out group-hover:scale-105 animate-fade-in p-2" 
+                          className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110" 
                         />
-                        {/* Hover Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                      </div>
+                        {/* Dark Gradient Overlay for Contrast */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-transparent" />
 
-                      {/* Elegant Labels and Typography Section */}
-                      <div className="px-1.5 pb-2 flex-grow flex flex-col justify-between">
-                        <div>
-                          {/* Styled Category Badge with Icon */}
-                          <div className={`inline-flex items-center gap-1.5 px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full border w-fit mb-3.5 ${
-                            catColors[item.category] || 'bg-slate-50 text-slate-600'
-                          }`}>
-                            {icons[item.category]}
-                            <span>{item.category}</span>
-                          </div>
+                        {/* Floating Category Badge over Image */}
+                        <div className={`absolute top-3.5 left-3.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider backdrop-blur-md shadow-lg border border-white/20 text-white ${
+                          item.category === 'Awards' ? 'bg-amber-500/85' :
+                          item.category === 'Events' ? 'bg-indigo-600/85' :
+                          item.category === 'Recognition' ? 'bg-cyan-600/85' :
+                          item.category === 'Team Meet' ? 'bg-emerald-600/85' :
+                          'bg-rose-600/85'
+                        }`}>
+                          {icons[item.category]}
+                          <span>{item.category}</span>
+                        </div>
 
-                          {/* Title - Modern Premium Geometric Font Styling */}
-                          <h4 className="text-slate-800 font-sans font-extrabold text-[16px] tracking-tight leading-snug group-hover:text-cyan-600 transition-colors duration-300 mb-2">
+                        {/* Floating Expand Icon Button */}
+                        <div className="absolute top-3.5 right-3.5 w-9 h-9 rounded-full bg-slate-950/50 backdrop-blur-md border border-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 hover:bg-cyan-500 hover:border-cyan-400 shadow-xl">
+                          <Maximize2 className="w-4 h-4" />
+                        </div>
+
+                        {/* Title Overlay at Image Bottom */}
+                        <div className="absolute bottom-3 left-4 right-4 z-10">
+                          <h4 className="text-white font-extrabold text-base tracking-tight leading-snug drop-shadow-md group-hover:text-cyan-200 transition-colors duration-300 line-clamp-1">
                             {item.title}
                           </h4>
                         </div>
+                      </div>
 
-                        {/* Description Subtitle */}
-                        <p className="text-slate-500 font-sans font-medium text-xs leading-relaxed line-clamp-2 mt-auto">
+                      {/* Card Bottom Description & CTA */}
+                      <div className="p-5 flex flex-col justify-between flex-grow bg-white">
+                        <p className="text-slate-600 text-xs leading-relaxed line-clamp-2 mb-4">
                           {item.description}
                         </p>
+
+                        <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-cyan-600 group-hover:text-cyan-700">
+                          <span>View Full Photo</span>
+                          <div className="w-7 h-7 rounded-full bg-cyan-50 group-hover:bg-cyan-600 group-hover:text-white flex items-center justify-center transition-all duration-300">
+                            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                          </div>
+                        </div>
                       </div>
                     </motion.div>
                   );
@@ -868,38 +876,42 @@ export default function HomePage() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedImage(null)}
-              className="fixed inset-0 z-[100] bg-slate-950/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-8"
+              className="fixed inset-0 z-[100] bg-slate-950/90 backdrop-blur-xl flex flex-col items-center justify-center p-4 md:p-8"
             >
               <button 
                 onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }}
-                className="absolute top-6 right-6 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300"
+                className="absolute top-6 right-6 text-white/80 hover:text-white bg-white/10 hover:bg-cyan-500 p-3 rounded-full transition-all duration-300 shadow-2xl border border-white/20 z-10"
               >
                 <X className="w-6 h-6" />
               </button>
               
               <motion.div 
-                initial={{ scale: 0.95, y: 20 }}
+                initial={{ scale: 0.9, y: 20 }}
                 animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0.95, y: 20 }}
+                exit={{ scale: 0.9, y: 20 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative max-w-5xl max-h-[80vh] w-full flex items-center justify-center rounded-2xl overflow-hidden"
+                className="relative max-w-5xl max-h-[85vh] w-full flex flex-col items-center justify-center rounded-3xl overflow-hidden bg-slate-900 border border-white/10 shadow-2xl p-2"
               >
                 <img 
                   src={selectedImage} 
-                  alt="Enlarged gallery view" 
-                  className="max-w-full max-h-[80vh] object-contain rounded-2xl border-4 border-white/10 shadow-2xl"
+                  alt="Enlarged achievement view" 
+                  className="max-w-full max-h-[70vh] object-contain rounded-2xl"
                 />
-              </motion.div>
 
-              <div className="mt-6 text-center max-w-2xl">
-                <p className="text-white text-lg font-medium tracking-wide">
-                  {(() => {
-                    const item = GALLERY_ITEMS.find(i => i.src === selectedImage);
-                    return item ? `${item.title} (${item.category})` : "";
-                  })()}
-                </p>
-                <p className="text-slate-400 text-xs mt-1">Click anywhere outside the image to close</p>
-              </div>
+                {(() => {
+                  const item = GALLERY_ITEMS.find(i => i.src === selectedImage);
+                  if (!item) return null;
+                  return (
+                    <div className="w-full bg-slate-950/80 backdrop-blur-md p-4 text-center border-t border-white/10 mt-2">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 mb-1.5">
+                        <span>{item.category}</span>
+                      </div>
+                      <h4 className="text-white text-lg font-bold">{item.title}</h4>
+                      <p className="text-slate-400 text-xs mt-0.5">{item.description}</p>
+                    </div>
+                  );
+                })()}
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
