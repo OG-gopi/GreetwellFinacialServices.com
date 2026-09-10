@@ -189,12 +189,12 @@ export default function HomePage() {
           </nav>
 
           <div className="hidden md:flex items-center gap-3 relative z-20">
-            <a href="tel:+919866382525" className="w-10 h-10 rounded-full bg-cyan-50 flex items-center justify-center text-cyan-600 hover:bg-cyan-100 transition-colors">
+            <a href="tel:+919121147777" className="w-10 h-10 rounded-full bg-cyan-50 flex items-center justify-center text-cyan-600 hover:bg-cyan-100 transition-colors">
               <Phone className="w-4 h-4" />
             </a>
             <div className="flex flex-col">
-              <a href="tel:+919866382525" className="text-sm font-bold text-slate-900 hover:text-cyan-600 transition-colors">
-                +91 98663 82525
+              <a href="tel:+919121147777" className="text-sm font-bold text-slate-900 hover:text-cyan-600 transition-colors">
+                +91 91211 47777
               </a>
               <span className="text-[10px] text-slate-500 font-medium">Mon - Sat: 9:30 AM - 6:30 PM</span>
             </div>
@@ -702,7 +702,7 @@ export default function HomePage() {
 
               <div className="mt-auto">
                 <a
-                  href="https://wa.me/919866382525"
+                  href="https://wa.me/919121147777"
                   target="_blank"
                   rel="noreferrer"
                   className="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white py-4 rounded-full font-extrabold text-sm hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300 transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2.5 shadow-lg shadow-green-500/20"
@@ -710,7 +710,7 @@ export default function HomePage() {
                   <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                     <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.454L0 24zm6.59-4.846c1.66.986 3.288 1.488 4.605 1.488 5.25 0 9.533-4.272 9.536-9.519.001-2.546-.993-4.932-2.799-6.735-1.807-1.805-4.205-2.8-6.753-2.801-5.256 0-9.539 4.274-9.543 9.52-.002 2.032.547 3.81 1.588 5.351l-.994 3.632 3.86-.987zm11.252-5.466c-.099-.166-.367-.266-.77-.466-.403-.2-2.378-1.173-2.747-1.306-.37-.133-.639-.2-.907.2-.268.4-.1.77.302.266-.402-.2-1.373-1.272-1.742-1.405-.269-.134-.537-.066-.739.068-.201.133-.872.868-.872 2.115 0 1.247.907 2.451 1.008 2.618.101.166 1.782 2.72 4.318 3.814.603.26 1.074.415 1.442.531.606.192 1.158.165 1.594.1.486-.073 1.493-.6 1.701-1.18.208-.579.208-1.077.146-1.18-.063-.101-.33-.166-.734-.366z"/>
                   </svg>
-                  <span>Contact Now: 98663 82525</span>
+                  <span>Contact Now: 91211 47777</span>
                 </a>
               </div>
             </motion.div>
@@ -929,7 +929,7 @@ export default function HomePage() {
                 <a href="https://www.youtube.com/@Greetwell_financialservices" target="_blank" rel="noreferrer" className="text-red-600 hover:opacity-80 transition-opacity">
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M21.582 6.186a2.632 2.632 0 0 0-1.85-1.865C18.096 3.882 12 3.882 12 3.882s-6.096 0-7.732.439a2.632 2.632 0 0 0-1.85 1.865C2 7.828 2 12 2 12s0 4.172.418 5.814a2.632 2.632 0 0 0 1.85 1.865C5.904 20.118 12 20.118 12 20.118s6.096 0 7.732-.439a2.632 2.632 0 0 0 1.85-1.865C22 16.172 22 12 22 12s0-4.172-.418-5.814zm-11.83 8.784V9.03L15.348 12l-5.596 2.97z"/></svg>
                 </a>
-                <a href="https://wa.me/919866382525" target="_blank" rel="noreferrer" className="text-green-500 hover:opacity-80 transition-opacity">
+                <a href="https://wa.me/919121147777" target="_blank" rel="noreferrer" className="text-green-500 hover:opacity-80 transition-opacity">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
                 </a>
               </div>
@@ -948,7 +948,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
-                  <a href="tel:+919866382525" className="text-slate-400 hover:text-white transition-colors">+91 98663 82525</a>
+                  <a href="tel:+919121147777" className="text-slate-400 hover:text-white transition-colors">+91 91211 47777</a>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
