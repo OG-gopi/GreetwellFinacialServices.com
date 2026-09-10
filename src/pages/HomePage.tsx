@@ -813,46 +813,50 @@ export default function HomePage() {
                       {/* Top Accent Gradient Border on Hover */}
                       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
 
-                      {/* Full-Bleed Cover Image Frame */}
-                      <div className="relative h-60 w-full overflow-hidden bg-slate-900">
+                      {/* Image Box Frame - Clean Padding & Fitted Image */}
+                      <div className="relative h-60 w-full overflow-hidden bg-slate-950 p-3 flex items-center justify-center">
+                        {/* Background subtle blur fill */}
+                        <div 
+                          className="absolute inset-0 bg-cover bg-center blur-md opacity-30 scale-110" 
+                          style={{ backgroundImage: `url(${item.src})` }}
+                        />
+                        <div className="absolute inset-0 bg-slate-950/50" />
+
+                        {/* Complete Fit Photo (100% visible, no crop) */}
                         <img 
                           src={item.src} 
                           alt={item.title} 
-                          className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110" 
+                          className="relative z-10 max-w-full max-h-full object-contain rounded-xl shadow-md transition-transform duration-500 group-hover:scale-105" 
                         />
-                        {/* Dark Gradient Overlay for Contrast */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-transparent" />
 
                         {/* Floating Category Badge over Image */}
-                        <div className={`absolute top-3.5 left-3.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider backdrop-blur-md shadow-lg border border-white/20 text-white ${
-                          item.category === 'Awards' ? 'bg-amber-500/85' :
-                          item.category === 'Events' ? 'bg-indigo-600/85' :
-                          item.category === 'Recognition' ? 'bg-cyan-600/85' :
-                          item.category === 'Team Meet' ? 'bg-emerald-600/85' :
-                          'bg-rose-600/85'
+                        <div className={`absolute top-3 left-3 z-20 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider backdrop-blur-md shadow-lg border border-white/20 text-white ${
+                          item.category === 'Awards' ? 'bg-amber-500/90' :
+                          item.category === 'Events' ? 'bg-indigo-600/90' :
+                          item.category === 'Recognition' ? 'bg-cyan-600/90' :
+                          item.category === 'Team Meet' ? 'bg-emerald-600/90' :
+                          'bg-rose-600/90'
                         }`}>
                           {icons[item.category]}
                           <span>{item.category}</span>
                         </div>
 
                         {/* Floating Expand Icon Button */}
-                        <div className="absolute top-3.5 right-3.5 w-9 h-9 rounded-full bg-slate-950/50 backdrop-blur-md border border-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 hover:bg-cyan-500 hover:border-cyan-400 shadow-xl">
-                          <Maximize2 className="w-4 h-4" />
-                        </div>
-
-                        {/* Title Overlay at Image Bottom */}
-                        <div className="absolute bottom-3 left-4 right-4 z-10">
-                          <h4 className="text-white font-extrabold text-base tracking-tight leading-snug drop-shadow-md group-hover:text-cyan-200 transition-colors duration-300 line-clamp-1">
-                            {item.title}
-                          </h4>
+                        <div className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-slate-950/60 backdrop-blur-md border border-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 hover:bg-cyan-500 hover:border-cyan-400 shadow-xl">
+                          <Maximize2 className="w-3.5 h-3.5" />
                         </div>
                       </div>
 
-                      {/* Card Bottom Description & CTA */}
+                      {/* Card Content Below Image */}
                       <div className="p-5 flex flex-col justify-between flex-grow bg-white">
-                        <p className="text-slate-600 text-xs leading-relaxed line-clamp-2 mb-4">
-                          {item.description}
-                        </p>
+                        <div className="mb-3">
+                          <h4 className="text-slate-900 font-extrabold text-base tracking-tight leading-snug group-hover:text-cyan-600 transition-colors duration-300 line-clamp-1 mb-1.5">
+                            {item.title}
+                          </h4>
+                          <p className="text-slate-500 text-xs leading-relaxed line-clamp-2">
+                            {item.description}
+                          </p>
+                        </div>
 
                         <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-cyan-600 group-hover:text-cyan-700">
                           <span>View Full Photo</span>
@@ -876,11 +880,11 @@ export default function HomePage() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedImage(null)}
-              className="fixed inset-0 z-[100] bg-slate-950/90 backdrop-blur-xl flex flex-col items-center justify-center p-4 md:p-8"
+              className="fixed inset-0 z-[100] bg-slate-950/95 backdrop-blur-xl flex flex-col items-center justify-center p-4 md:p-8"
             >
               <button 
                 onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }}
-                className="absolute top-6 right-6 text-white/80 hover:text-white bg-white/10 hover:bg-cyan-500 p-3 rounded-full transition-all duration-300 shadow-2xl border border-white/20 z-10"
+                className="absolute top-6 right-6 text-white/80 hover:text-white bg-white/10 hover:bg-cyan-500 p-3 rounded-full transition-all duration-300 shadow-2xl border border-white/20 z-20"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -890,24 +894,27 @@ export default function HomePage() {
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.9, y: 20 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative max-w-5xl max-h-[85vh] w-full flex flex-col items-center justify-center rounded-3xl overflow-hidden bg-slate-900 border border-white/10 shadow-2xl p-2"
+                className="relative max-w-5xl max-h-[90vh] w-full flex flex-col items-center justify-center rounded-3xl overflow-hidden bg-slate-900/90 border border-slate-700/80 shadow-2xl p-4 md:p-6"
               >
-                <img 
-                  src={selectedImage} 
-                  alt="Enlarged achievement view" 
-                  className="max-w-full max-h-[70vh] object-contain rounded-2xl"
-                />
+                {/* Photo Display Frame with Clean Border & Top/Bottom Padding */}
+                <div className="w-full flex items-center justify-center p-2 md:p-4 rounded-2xl bg-slate-950/60 border border-white/10 overflow-hidden">
+                  <img 
+                    src={selectedImage} 
+                    alt="Enlarged achievement view" 
+                    className="max-w-full max-h-[65vh] object-contain rounded-xl shadow-2xl border border-white/10"
+                  />
+                </div>
 
                 {(() => {
                   const item = GALLERY_ITEMS.find(i => i.src === selectedImage);
                   if (!item) return null;
                   return (
-                    <div className="w-full bg-slate-950/80 backdrop-blur-md p-4 text-center border-t border-white/10 mt-2">
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 mb-1.5">
+                    <div className="w-full bg-slate-950/90 backdrop-blur-md p-4 text-center border-t border-slate-800 mt-4 rounded-2xl">
+                      <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 mb-2">
                         <span>{item.category}</span>
                       </div>
-                      <h4 className="text-white text-lg font-bold">{item.title}</h4>
-                      <p className="text-slate-400 text-xs mt-0.5">{item.description}</p>
+                      <h4 className="text-white text-xl font-bold font-serif">{item.title}</h4>
+                      <p className="text-slate-400 text-xs mt-1 max-w-2xl mx-auto">{item.description}</p>
                     </div>
                   );
                 })()}
