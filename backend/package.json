@@ -5,13 +5,13 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "npx prisma generate && npx tsc",
+    "build": "prisma generate && tsc",
     "start": "node dist/server.js",
-    "db:generate": "npx prisma generate",
-    "db:push": "npx prisma db push",
-    "db:seed": "npx ts-node prisma/seed.ts",
-    "db:clean": "npx ts-node scripts/clean-production-db.ts",
-    "test": "npx vitest run"
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:seed": "ts-node prisma/seed.ts",
+    "db:clean": "ts-node scripts/clean-production-db.ts",
+    "test": "vitest run"
   },
   "dependencies": {
     "@prisma/client": "5.22.0",
