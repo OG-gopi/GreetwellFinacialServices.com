@@ -2,12 +2,20 @@
   "name": "crmgreetwellfinacialservices.com",
   "version": "1.0.0",
   "description": "Greetwell Financial Services CRM Portal",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
   "scripts": {
-    "build:frontend": "npm --prefix frontend run build",
+    "postinstall": "npm --prefix backend run db:generate",
     "build:backend": "npm --prefix backend run build",
+    "build:frontend": "npm --prefix frontend run build",
     "build": "npm run build:backend && npm run build:frontend",
     "start": "npm --prefix backend start",
     "test": "npm --prefix backend test"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
   },
   "keywords": [
     "greetwell",
