@@ -215,12 +215,12 @@ export const WebsiteManagementSub: React.FC<WebsiteManagementSubProps> = ({ subP
     if (!url || !url.trim()) return '';
     if (url.startsWith('http://') || url.startsWith('https://')) return url;
     if (url.startsWith('/uploads')) {
-      return `http://localhost:5000${url}`;
+      return url;
     }
     if (url.startsWith('/')) {
-      return `http://localhost:5000/uploads/media${url}`;
+      return `/uploads/media${url}`;
     }
-    return `http://localhost:5000/uploads/media/${url}`;
+    return `/uploads/media/${url}`;
   };
 
   // Form Field Handlers with dirty tracking
@@ -1454,7 +1454,7 @@ export const WebsiteManagementSub: React.FC<WebsiteManagementSubProps> = ({ subP
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                                 onError={(e: any) => {
                                   e.target.onerror = null;
-                                  e.target.src = 'http://localhost:5000/uploads/media/logo.png';
+                                  e.target.src = '/uploads/media/logo.png';
                                 }}
                               />
                               <span className="absolute top-2 left-2 px-2 py-0.5 bg-blue-600 text-white rounded text-[9px] font-bold">
@@ -1498,7 +1498,7 @@ export const WebsiteManagementSub: React.FC<WebsiteManagementSubProps> = ({ subP
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                                 onError={(e: any) => {
                                   e.target.onerror = null;
-                                  e.target.src = 'http://localhost:5000/uploads/media/logo.png';
+                                  e.target.src = '/uploads/media/logo.png';
                                 }}
                               />
                               <span className="absolute top-2 left-2 px-2 py-0.5 bg-amber-600 text-white rounded text-[9px] font-bold">

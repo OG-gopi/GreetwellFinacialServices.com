@@ -107,7 +107,7 @@ export const Login: React.FC = () => {
     if (document.referrer && document.referrer.startsWith('http') && !document.referrer.includes('/login')) {
       window.location.href = document.referrer;
     } else {
-      window.location.href = 'http://localhost:3000';
+      window.location.href = '/';
     }
   };
 
@@ -319,7 +319,7 @@ export const Login: React.FC = () => {
             {/* Back to Home Button */}
             <div className="mt-3 text-center">
               <a
-                href="http://localhost:3000"
+                href="/"
                 onClick={handleBackToHome}
                 className="text-xs font-bold text-slate-600 hover:text-blue-700 transition-colors inline-flex items-center gap-1.5 py-1.5 px-3.5 rounded-xl hover:bg-slate-100"
               >

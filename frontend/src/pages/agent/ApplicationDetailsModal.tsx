@@ -381,7 +381,7 @@ export const ApplicationDetailsModal: React.FC<ApplicationDetailsModalProps> = (
   const getFullFileUrl = (url: string) => {
     if (!url) return '';
     if (url.startsWith('http')) return url;
-    return `http://localhost:5000${url.startsWith('/') ? '' : '/'}${url}`;
+    return `${url.startsWith('/') ? '' : '/'}${url}`;
   };
 
   return (

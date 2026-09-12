@@ -5,9 +5,9 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "prisma generate && tsc",
+    "build": "prisma generate --schema=prisma/schema.prisma || ../node_modules/.bin/prisma generate --schema=prisma/schema.prisma && tsc",
     "start": "node dist/server.js",
-    "db:generate": "prisma generate",
+    "db:generate": "prisma generate --schema=prisma/schema.prisma || ../node_modules/.bin/prisma generate --schema=prisma/schema.prisma",
     "db:push": "prisma db push",
     "db:seed": "ts-node prisma/seed.ts",
     "db:clean": "ts-node scripts/clean-production-db.ts",

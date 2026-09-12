@@ -1,4 +1,5 @@
 import { prisma } from '../utils/prisma';
+import { CONFIG } from '../config';
 
 export interface WhatsAppNotificationPayload {
   to: string; // Recipient mobile number
@@ -23,7 +24,7 @@ export class WhatsAppService {
       console.log(`Message:\n${message}`);
       console.log(`==================================================\n`);
 
-      // 2. Persist log entry in database
+      // 2. Persist log record into DB WhatsAppLog table
       await prisma.whatsAppLog.create({
         data: {
           recipientPhone: to,
@@ -38,7 +39,8 @@ export class WhatsAppService {
 
       return true;
     } catch (err) {
-      console.error('Failed to dispatch WhatsApp notification:', err);
+      console.error('Failed to record WhatsApp notification log:', err);
+      // Fallback: log to console if DB fails
       try {
         await prisma.whatsAppLog.create({
           data: {
@@ -48,7 +50,7 @@ export class WhatsAppService {
             message,
             status: 'FAILED',
             applicationId: applicationId || null,
-            metadata: metadata ? JSON.stringify(metadata) : null,
+            metadata: JSON.stringify({ error: String(err), ...(metadata || {}) }),
           },
         });
       } catch (innerErr) {
@@ -59,7 +61,7 @@ export class WhatsAppService {
   }
 
   async notifyApplicationCreated(to: string, customerName: string, applicationId: string, appType: string, status: string) {
-    const message = `Hello ${customerName},\nYour ${appType} application ${applicationId} has been successfully submitted to GFS Portal.\nCurrent Status: ${status}.\nTrack application: http://localhost:3000/customer/applications`;
+    const message = `Hello ${customerName},\nYour ${appType} application ${applicationId} has been successfully submitted to GFS Portal.\nCurrent Status: ${status}.\nTrack application: ${CONFIG.APP_URL}/customer/applications`;
     return this.sendNotification({
       to,
       recipientName: customerName,
@@ -71,7 +73,7 @@ export class WhatsAppService {
   }
 
   async notifyStatusUpdate(to: string, recipientName: string, applicationId: string, appType: string, newStatus: string) {
-    const message = `Hello ${recipientName},\nYour ${appType} application ${applicationId} status has been updated to: ${newStatus}.\nView details: http://localhost:3000/customer/applications`;
+    const message = `Hello ${recipientName},\nYour ${appType} application ${applicationId} status has been updated to: ${newStatus}.\nView details: ${CONFIG.APP_URL}/customer/applications`;
     return this.sendNotification({
       to,
       recipientName,
@@ -83,7 +85,7 @@ export class WhatsAppService {
   }
 
   async notifyDocumentRequest(to: string, customerName: string, applicationId: string, requestTitle: string, description?: string) {
-    const message = `Hello ${customerName},\nAttention Required for Application ${applicationId}:\nRequest: ${requestTitle}${description ? `\nDetails: ${description}` : ''}\nPlease upload requested documents: http://localhost:3000/customer/applications`;
+    const message = `Hello ${customerName},\nAttention Required for Application ${applicationId}:\nRequest: ${requestTitle}${description ? `\nDetails: ${description}` : ''}\nPlease upload requested documents: ${CONFIG.APP_URL}/customer/applications`;
     return this.sendNotification({
       to,
       recipientName: customerName,
@@ -95,7 +97,7 @@ export class WhatsAppService {
   }
 
   async notifyCustomerReply(to: string, recipientName: string, applicationId: string, requestTitle: string) {
-    const message = `Hello ${recipientName},\nCustomer has replied to request '${requestTitle}' on Application ${applicationId}.\nReview update: http://localhost:3000/superadmin/applications`;
+    const message = `Hello ${recipientName},\nCustomer has replied to request '${requestTitle}' on Application ${applicationId}.\nReview update: ${CONFIG.APP_URL}/superadmin/applications`;
     return this.sendNotification({
       to,
       recipientName,
