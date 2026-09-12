@@ -17,7 +17,19 @@ export async function login(req: Request, res: Response) {
       return res.status(400).json({ success: false, message: 'Email and password are required.' });
     }
 
-    const user = await prisma.user.findUnique({ where: { email: email.toLowerCase() } });
+    const loginIdentifier = email.trim().toLowerCase();
+    const rawIdentifier = email.trim();
+
+    const user = await prisma.user.findFirst({
+      where: {
+        OR: [
+          { email: loginIdentifier },
+          { phone: rawIdentifier },
+          { customerIdCode: rawIdentifier.toUpperCase() },
+          { agentIdCode: rawIdentifier.toUpperCase() },
+        ],
+      },
+    });
     if (!user) {
       return res.status(401).json({ success: false, message: 'Invalid credentials.' });
     }
