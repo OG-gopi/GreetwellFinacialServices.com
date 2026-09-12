@@ -1,0 +1,20 @@
+{
+  "name": "crmgreetwellfinacialservices.com",
+  "version": "1.0.0",
+  "description": "Greetwell Financial Services CRM Portal",
+  "scripts": {
+    "build:frontend": "npm --prefix frontend run build",
+    "build:backend": "npm --prefix backend run build",
+    "build": "npm run build:backend && npm run build:frontend",
+    "start": "npm --prefix backend start",
+    "test": "npm --prefix backend test"
+  },
+  "keywords": [
+    "greetwell",
+    "financial-services",
+    "crm",
+    "portal"
+  ],
+  "author": "Greetwell Financial Services",
+  "license": "ISC"
+}
