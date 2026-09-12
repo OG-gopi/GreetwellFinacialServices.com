@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   Phone, ChevronRight, CheckCircle2, Menu, X, ArrowRight, 
-  MapPin, Mail, Globe, Trophy, Calendar, Users, Award, Heart, Sparkles, Maximize2
+  MapPin, Mail, Globe, Trophy, Calendar, Users, Award, Heart, Sparkles, Maximize2, User
 } from 'lucide-react'
 
 const HERO_IMAGES = [
@@ -198,7 +198,14 @@ export default function HomePage() {
               </a>
               <span className="text-[10px] text-slate-500 font-medium">Mon - Sat: 9:30 AM - 6:30 PM</span>
             </div>
-            {/* Login button temporarily hidden for public lead-gen mode */}
+            
+            <Link
+              to="/login"
+              className="ml-2 px-5 py-2.5 rounded-full bg-slate-900 hover:bg-cyan-600 text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-cyan-600/25 flex items-center gap-2"
+            >
+              <User className="w-3.5 h-3.5" />
+              <span>Login</span>
+            </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -239,7 +246,15 @@ export default function HomePage() {
                   </a>
                 );
               })}
-              {/* Mobile Login button temporarily hidden */}
+              
+              <Link
+                to="/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full text-center text-sm font-bold p-3 rounded-xl bg-slate-900 text-white hover:bg-cyan-600 transition-all duration-200 flex items-center justify-center gap-2 shadow-md"
+              >
+                <User className="w-4 h-4" />
+                <span>Login</span>
+              </Link>
             </motion.div>
           )}
         </AnimatePresence>
