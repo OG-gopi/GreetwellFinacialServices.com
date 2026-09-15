@@ -1,9 +1,14 @@
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Briefcase, Shield, TrendingUp, ArrowRight, ArrowLeft } from 'lucide-react'
 
 export default function PortalSelectionPage() {
   const navigate = useNavigate()
+
+  useEffect(() => {
+    window.location.href = 'https://crm-greetwellfinacialservicescrmg.vercel.app/login'
+  }, [])
 
   const portals = [
     {

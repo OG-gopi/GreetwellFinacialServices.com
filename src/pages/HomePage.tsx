@@ -85,6 +85,39 @@ export default function HomePage() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [activeCategory, setActiveCategory] = useState('All')
   const [selectedAgentType, setSelectedAgentType] = useState<'loan-agent' | 'insurance-agent' | 'investment-agent'>('loan-agent')
+  const [galleryItems, setGalleryItems] = useState(GALLERY_ITEMS)
+
+  const [contactData, setContactData] = useState<any>(null);
+  const [socialData, setSocialData] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchPublicData = async () => {
+      try {
+        const res = await fetch('http://localhost:5000/api/website/public')
+        const data = await res.json()
+        if (data.success) {
+          if (data.data?.contact) {
+            setContactData(data.data.contact);
+          }
+          if (data.data?.socials) {
+            setSocialData(data.data.socials);
+          }
+          if (data.data?.allMedia && data.data.allMedia.length > 0) {
+            const fetched = data.data.allMedia.map((m: any) => ({
+              src: m.url?.startsWith('/uploads') ? `http://localhost:5000${m.url}` : (m.url || '/gallery_gfs_1.png'),
+              title: m.title,
+              category: m.category || (m.section === 'CSR Activities' ? 'CSR Activities' : m.section === 'Recognition' ? 'Recognition' : 'Awards'),
+              description: m.description || ''
+            }))
+            setGalleryItems(fetched)
+          }
+        }
+      } catch (e) {
+        console.log('Using fallback default website data')
+      }
+    }
+    fetchPublicData()
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -199,13 +232,13 @@ export default function HomePage() {
               <span className="text-[10px] text-slate-500 font-medium">Mon - Sat: 9:30 AM - 6:30 PM</span>
             </div>
             
-            <Link
-              to="/login"
+            <a
+              href="https://crm-greetwellfinacialservicescrmg.vercel.app/login"
               className="ml-2 px-5 py-2.5 rounded-full bg-slate-900 hover:bg-cyan-600 text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-cyan-600/25 flex items-center gap-2"
             >
               <User className="w-3.5 h-3.5" />
               <span>Login</span>
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -247,14 +280,14 @@ export default function HomePage() {
                 );
               })}
               
-              <Link
-                to="/login"
+              <a
+                href="https://crm-greetwellfinacialservicescrmg.vercel.app/login"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full text-center text-sm font-bold p-3 rounded-xl bg-slate-900 text-white hover:bg-cyan-600 transition-all duration-200 flex items-center justify-center gap-2 shadow-md"
               >
                 <User className="w-4 h-4" />
                 <span>Login</span>
-              </Link>
+              </a>
             </motion.div>
           )}
         </AnimatePresence>
@@ -803,7 +836,7 @@ export default function HomePage() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
             <AnimatePresence mode="popLayout">
-              {GALLERY_ITEMS
+              {galleryItems
                 .filter(item => activeCategory === 'All' || item.category === activeCategory)
                 .map((item, idx) => {
                   const icons: Record<string, React.ReactNode> = {
